@@ -111,23 +111,25 @@ Schedule:
 
 -   April 30, 2022: Set up Meteor.js and get Svelte up.
 
--   May 27, 2022: Start the process of making the IDE part for javascript
+-   August 16, 2022: Start the process of making the IDE part for javascript
 
--   July 16, 2022: Start researching socket programming with javascript and see
+-   September 16, 2022: Start researching socket programming with javascript and see
     more of Meteor.js's features
 
--   August 17, 2022: Hopefully start the connection to other people via the use
+-   September 26, 2022: Start the Draft Test Plan   
+
+-   October 1, 2022: Hopefully start the connection to other people via the use
     of Meteor.js
 
--   September 18, 2022: Start focusing on testing the product extensively, update
+-   October 18, 2022: Start focusing on testing the product extensively, update
     importaint documents, and start the test document
 
--   October 15, 2022: Slowly start programming the visual aspect of the project   
-
--   November 1, 2022: Completed Test Plan
+-   November 20, 2022: Completed Test Plan
 
 -   November 30, 2022: A Report to my Advisor on the progress of the project and 
     place relevent information inside of the git repository
+
+-   December 9, 2022: Slowly start programming the visual aspect of the project  
 
 -   January 1, 2023: Start the Defence Documentation document/ Final Report
 
