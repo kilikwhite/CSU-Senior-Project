@@ -1,24 +1,43 @@
-<!--
+
 <script>
-  let counter = 0;
-  const addToCounter = () => {
-    counter += 1;
-  }
+  src="src/Programing_VS/lib/ACE/ace.js";
+  src="src/Programing_VS/lib/ACE/mode-javascript.js";
 </script>
 
 
-<div class="container">
-  <h1>Welcome to Meteor!</h1>
 
-  <button on:click={addToCounter}>Click Me</button>
-  <p>You've pressed the button {counter} times.</p>
+    
 
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://svelte-tutorial.meteor.com/" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<!--make this go to the top left-->
+<div id="back">Back</div>
+  
+<!--This will be filler for the questions-->
+<div id="q">Questions</div>
+    
+<!--This will be a selectable thing if i can make it to other languages-->
+<div class="control-panel">
+  <select id="languages" class="languages" onchange="changeLanguage()">
+        <option value="javascript"> javascript </option>
+  </select>
+  
 </div>
--->
+
+<!--This will be where the code will go-->
+<div class="Code-area" id = "editor">
+  <!--<textarea class="editor"></textarea> -->
+</div> 
+
+
+    <!--<form>  
+        <input class="editor" type="text" id="editor"><br/>    
+    </form>-->
+
+<div class="button-container">
+    <button class="btn"> Run </button>
+    <button class="Cbtn"> Clear</button>
+</div>
+
+<!--where the output is at-->
+<div class="Code-area">
+  <textarea class="returns"></textarea>
+</div>

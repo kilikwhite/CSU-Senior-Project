@@ -710,8 +710,8 @@ oop.inherits(Mode, TextMode);
 }).call(Mode.prototype);
 exports.Mode = Mode;
 
-});                (function() {
-                    window.require(["ace/mode/javascript"], function(m) {
+});                (function() { //note try to put window back later
+                    global.require(["ace/mode/javascript"], function(m) {
                         if (typeof module == "object" && typeof exports == "object" && module) {
                             module.exports = m;
                         }

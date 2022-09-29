@@ -7,33 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programing_VS</title>
     <link rel="stylesheet" href="../client/main.css"/>
+    <!--<link rel="stylesheet" href="../src/Programing_VS/lib/CodeMirror/lib/codemirror.css">-->
 </head>
 <body>
     <div id="app"></div>
-    <!--make this go to the top left-->
-    <div id="back">Back</div>
-    <!--This will be filler for the questions-->
-    <div id="q">Questions</div>
-    <div class="control-panel">
-        Select Language:
-        &nbsp; &nbsp;
-        <select id="languages" class="languages" onchange="changeLanguage()">
-            <option value="javascript"> javascript </option>
-        </select>
-    </div>
-    
-    <div class="editor" id="editor"></div>
-    <!--<form>  
-        <input class="editor" type="text" id="editor"><br/>    
-    </form>-->
-
-    <div class="button-container">
-        <button class="btn" onclick="executeCode()"> Run </button>
-    </div>
-    
-    <div class="output"></div>
-
-    <script src="../client/main.js"></script>
-    <script src="../lib/ace.js"></script>
-    <script src="../lib/theme-terminal.js"></script>
 </body>
