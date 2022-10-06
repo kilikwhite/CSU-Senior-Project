@@ -18857,9 +18857,9 @@ require("./ext/error_marker");
 exports.config = require("./config");
 exports.edit = function (el, options) {
     //personally added by me ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    var jsdom = require("jsdom");
-    var JSDOM = jsdom.JSDOM;
-    global.document = new JSDOM(html).window.document;
+    //var jsdom = require("jsdom");
+    //var JSDOM = jsdom.JSDOM;
+    //global.document = new JSDOM(html).window.document;
     // end of it ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     if (typeof el == "string") {
@@ -18912,7 +18912,7 @@ exports.version = exports.config.version;
 
 });            (function() {
     //note replace global with window later
-                global.require(["ace/ace"], function(a) {
+                window.require(["ace/ace"], function(a) {
                     if (a) {
                         a.config.init(true);
                         a.define = global.define;

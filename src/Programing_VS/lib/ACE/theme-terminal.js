@@ -10,7 +10,7 @@ dom.importCssString(exports.cssText, exports.cssClass, false);
 
 });                (function() {
     //note replace global with window later
-                    global.require(["ace/theme/terminal"], function(m) {
+                    window.require(["ace/theme/terminal"], function(m) {
                         if (typeof module == "object" && typeof exports == "object" && module) {
                             module.exports = m;
                         }
