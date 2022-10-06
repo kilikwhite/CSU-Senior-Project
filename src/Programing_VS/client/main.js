@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import App from '../imports/ui/App.svelte';
+//import '../server/main.js';
 
 //remember to copy and paste this section later
 /*

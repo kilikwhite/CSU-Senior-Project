@@ -9,6 +9,7 @@ var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass, false);
 
 });                (function() {
+    //note replace global with window later
                     window.require(["ace/theme/terminal"], function(m) {
                         if (typeof module == "object" && typeof exports == "object" && module) {
                             module.exports = m;

@@ -18856,6 +18856,12 @@ require("./theme/textmate");
 require("./ext/error_marker");
 exports.config = require("./config");
 exports.edit = function (el, options) {
+    //personally added by me ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //var jsdom = require("jsdom");
+    //var JSDOM = jsdom.JSDOM;
+    //global.document = new JSDOM(html).window.document;
+    // end of it ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     if (typeof el == "string") {
         var _id = el;
         el = document.getElementById(_id);
@@ -18905,18 +18911,19 @@ exports.VirtualRenderer = Renderer;
 exports.version = exports.config.version;
 
 });            (function() {
+    //note replace global with window later
                 window.require(["ace/ace"], function(a) {
                     if (a) {
                         a.config.init(true);
-                        a.define = window.define;
+                        a.define = global.define;
                     }
-                    if (!window.ace)
-                        window.ace = a;
+                    if (!global.ace)
+                        global.ace = a;
                     for (var key in a) if (a.hasOwnProperty(key))
-                        window.ace[key] = a[key];
-                    window.ace["default"] = window.ace;
+                        global.ace[key] = a[key];
+                    global.ace["default"] = global.ace;
                     if (typeof module == "object" && typeof exports == "object" && module) {
-                        module.exports = window.ace;
+                        module.exports = global.ace;
                     }
                 });
             })();
