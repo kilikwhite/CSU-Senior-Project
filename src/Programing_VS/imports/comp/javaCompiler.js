@@ -1,12 +1,12 @@
 //import { Meteor } from 'meteor/meteor';
 //import 'src/Programing_VS/lib/CodeMirror/mode/javascript/javascript.js';
-//import '/lib/ACE/ace.js';
+import '/lib/ACE/ace.js';
 //import '/lib/ACE/mode-javascript.js';
 //import '/lib/ACE/theme-terminal.js';
 //src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
 
-var codeEditor = ace.edit("editor");
-
+let codeEditor = ace.edit("editor");
+/*
 function executeCode(){
     let code = document.querySelector('editor');
     let frame = document.querySelector('returns');
@@ -25,7 +25,7 @@ window.onload = function(){
     editor.session.setTabSize(4);
     editor.session.setUseWrapMode(true);
 }
-
+*/
 //Meteor.methods({
     /*'global.onload':function(){
         let editor = ace.edit("editor");

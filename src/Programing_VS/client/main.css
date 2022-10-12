@@ -27,11 +27,15 @@ body {
     border: 1px solid gray;
 }
 
-.editor {
+.Code-area {
   height: 500px;
   width: 1800px;
 }
 
+.editor {
+    height: 500px;
+    width: 1800px;
+  }
 
 .button-container {
     text-align: right;

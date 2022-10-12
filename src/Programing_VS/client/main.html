@@ -10,7 +10,16 @@
     <!--<link rel="stylesheet" href="../src/Programing_VS/lib/CodeMirror/lib/codemirror.css">-->
 </head>
 <body>
-      <!--make this go to the top left-->
+    <script src="src\Programing_VS\lib\ACE\ace.js"></script>
+    <script src="src\Programing_VS\lib\ACE\mode-javascript.js"></script>
+    <!--<div id="app"></div>-->
+
+    <!--<script src="src\Programing_VS\imports\comp\javaCompiler.js"></script>  -->
+    <script>
+      let codeEditor = ace.edit("editor");
+    </script>
+    
+    <!--make this go to the top left-->
       <div id="back">Back</div>
         
       <!--This will be filler for the questions-->
@@ -25,8 +34,8 @@
       </div>
       
       <!--This will be where the code will go-->
-      <div class="Code-area" id = "editor">
-        <!--<textarea class="editor"></textarea> -->
+      <div class="Code-area">
+        <textarea class="editor"></textarea>
       </div> 
       
       
@@ -36,15 +45,11 @@
       </div>
       
       <!--where the output is at-->
-      <div class="Code-area">
+      <div class="Code-output">
         <textarea class="returns"></textarea>
       </div>
       
-    <script src="src/Programing_VS/lib/ACE/ace.js"></script>
-    <script src="src/Programing_VS/lib/ACE/mode-javascript.js"></script>
-    <!--<div id="app"></div>-->
-
-    <script src="src/Programing_VS/client/javaCompiler.js"></script>
+    
 </body>
 
 
