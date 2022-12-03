@@ -64,7 +64,7 @@ this allows the person to participate and they act like a participant meaning th
 can not see the other person's code when participating and they can change to 
 Spectator only at any time but lose the ability to actively participate.   The 
 people will know how well they are doing by hitting the Run button to run the code 
-and they will see a progress bar and text that said passed X number of tests.  There 
+and they will see text that said passed X number of tests.  There 
 is also participant only where all the person needs to enter a room in the room code 
 of an already made room to start programming against each other.
 
@@ -76,7 +76,7 @@ Javascript
 Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s):
 ---------------------------------------------------------------------------------------------------
 
-Meteor.js, Ace Editor, Svelte
+Express.js, Ace Editor, React, Socket.io, and Axios 
 
 Additional Software/Equipment Needed:
 -------------------------------------
@@ -129,9 +129,17 @@ Schedule:
 -   November 30, 2022: A Report to my Advisor on the progress of the project and 
     place relevent information inside of the git repository
 
--   December 9, 2022: Slowly start programming the visual aspect of the project  
+-   December 5, 2022: Access my project and make some changes if needed
+
+-   December 8, 2022: Report my project to the Advisor
+
+-   December 9, 2022: Slowly start programming the visual aspect of the project and try to fully complete it  
 
 -   January 1, 2023: Start the Defence Documentation document/ Final Report
+
+-   January 5, 2023: Start filling the Test Cases that were made
+
+-   Febuary 12, 2023:  Access my progress of the project
 
 -   March 1 2023: The Finished Project is in the Git Repository
 
