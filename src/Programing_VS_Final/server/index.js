@@ -2,59 +2,80 @@ const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const http = require("http");
+const { Server } = require("socket.io");
 const port = 80;
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id} `);
+
+  socket.on("join_room", (data) => {
+      socket.join(data);
+      console.log(`User with ID: ${socket.id} joined room ${data}`);
+  });
+
+  socket.on("send_message", (data) => {
+      socket.to(data.room).emit("receive_message", data);
+  });
+
+  socket.on("disconnect", () => {
+      console.log("User Disconnected", socket.id);
+  });
+});
 
 app.use(cors());
 app.use(express.json());
 
 let default1 = "./compiled/rightAwnser.mjs";
+let default2 = "./compiled/incorrectAwnser.mjs";
 
 app.post("/javascript", (req, res) => {
-    //const dir = "./compiled";
-    //make try catch later
-    //fs.mkdirSync(dir);
     fs.writeFileSync("./compiled/test.mjs", req.body.code);
     //fs.writeFileSync("test.js", req.body.code);
     console.log(req.body);
+    let actual_test = "./compiled/test.mjs";
     let testCaseResults = [];
-    /*
-    testCaseResults.push(false);
-    testCaseResults.push(false);
-    testCaseResults.push(false);
-    testCaseResults.push(false);
-
-    Q1Test(testCaseResults);
-    */
-    let path = default1;
-    path = "./compiled/test.mjs";
+    
+    let path = actual_test;
+    //path = "./compiled/test.mjs";
     if(fs.existsSync(path)){
       
       import(path).then((ns) => {
-          let t1 = [1, 2, ns.ADD(1, 2)];
-          let t2 = [8, 3, ns.ADD(8, 3)];
-          let t3 = [9, 0, ns.ADD(9, 0)];
-          let t4 = [-1, -9, ns.ADD(-1, -9)];
+          let t1 = [8, 3, ns.ADD(8, 3)];
+          console.log(t1[2]);
+          console.log(ns.ADD(8, 3));
           console.log(ns.ADD(1, 2));
+          console.log(ns.ADD(9, 0));
+          console.log(ns.ADD(-1, -9));
 
-          if(t1[2] === 3) {
+          if(ns.ADD(1, 2) === 3) {
             testCaseResults.push(true);
           } else {
             testCaseResults.push(false);
           }
 
-          if(t2[2] === 11) {
+          if(ns.ADD(8, 3) === 11) {
             testCaseResults.push(true);
           } else {
             testCaseResults.push(false);
           }
 
-          if(t3[2] === 9) {
+          if(ns.ADD(9, 0) === 9) {
             testCaseResults.push(true);
           } else {
             testCaseResults.push(false);
           }
 
-          if(t4[2] === -10) {
+          if(ns.ADD(-1, -9) === -10) {
             testCaseResults.push(true);
           } else {
             testCaseResults.push(false);
@@ -63,6 +84,7 @@ app.post("/javascript", (req, res) => {
           console.log(testCaseResults);
           res.json({testCaseResults});
           testCaseResults = [];
+          console.log(testCaseResults);
           fs.unlinkSync("./compiled/test.mjs");
         });
       
@@ -85,6 +107,11 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 }); */
 
+
 app.listen(port, () =>{
     console.log(`Example app listening at http://localhost:${port}`);
+}); 
+
+server.listen(3001, () => {
+  console.log("Server running");
 });

@@ -37,12 +37,29 @@ function onChange(newValue) {
 function Practice() {
   const [code, setCode] = useState("");
   const [testCaseResults, setTestCaseResults] = useState([]);
+  const default_Result = [];
+  
+  const showResults = () =>{
+      return(
+        <div>
+          {testCaseResults.map((res, i) => {
+            return (
+              <div key={i}>
+                <div>Test {i + 1} {res === true ? 'passed' : 'failed'}</div>
+              </div>
+            );
+          })}
+        </div>
+      )
+  };
 
   const submitCode = () =>{
       axios
         .post('http://localhost:80/javascript', {code})
         .then(({data}) => {
           setTestCaseResults(data.testCaseResults);
+          //showResults();
+          //setTestCaseResults([]);
           //console.log(data);
           //console.log(data.testCaseResults);
           //console.log(testCaseResults[0]);
@@ -53,15 +70,7 @@ function Practice() {
 
   };
   
-  const showResults = () =>{
-    if (testCaseResults.length === 0){
-      return(
-        <div>
-          The code can not compile
-        </div>
-      )
-    }
-  };
+  
   
   return(
     <div className="App">
@@ -77,16 +86,12 @@ function Practice() {
           name="UNIQUE_ID_OF_DIV"
           editorProps={{ $blockScrolling: true }}
         />
-        <div>
-          {testCaseResults.map((res, i) => {
-            return (
-              <div key={i}>
-                <div>Test {i + 1} {res === true ? 'passed' : 'failed'}</div>
-              </div>
-            );
-          })}
-        </div>
-        <button onClick={submitCode}>Submit</button>
+        {showResults()}
+        <button onClick={() => {submitCode();
+          console.log(testCaseResults); 
+          setTestCaseResults(default_Result);
+          console.log(testCaseResults);}}>
+          Submit</button>
       </div> 
   )  
 }
