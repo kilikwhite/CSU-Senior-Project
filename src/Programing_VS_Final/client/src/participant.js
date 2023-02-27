@@ -4,7 +4,7 @@ import AceEditor from "react-ace";
 import axios from 'axios';
 
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-terminal";
+import "ace-builds/src-noconflict/theme-kuroior";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 function Participant({socket, username, room}){
@@ -74,7 +74,7 @@ function Participant({socket, username, room}){
         <div>Please write a function named 'add' that adds two numbers together in javascript and don't forget to use export on the functions</div>
         <AceEditor
           mode="javascript"
-          theme="terminal"
+          theme="kuroior"
           value = {code}
           onChange={ (editor, change) => {
             setCode(editor);

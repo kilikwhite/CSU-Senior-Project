@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const http = require("http");
+var Sandbox = require("sandbox");
 const { Server } = require("socket.io");
 const port = 80;
 
@@ -39,14 +40,76 @@ let default1 = "./compiled/rightAwnser.mjs";
 let default2 = "./compiled/incorrectAwnser.mjs";
 
 app.post("/javascript", (req, res) => {
+    const s = new Sandbox();
+
+    //might not need below thing
     fs.writeFileSync("./compiled/test.mjs", req.body.code);
     //fs.writeFileSync("test.js", req.body.code);
     console.log(req.body);
     let actual_test = "./compiled/test.mjs";
     let testCaseResults = [];
+
+    let tester = `//~~~~~~~~~~~~~~~~Initalizing Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    let T_Results = [];
+    if(ADD(1, 2) === 3) {
+      T_Results.push(true);
+      console.log("Test 1 Passed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+    } else {
+      T_Results.push(false);
+      console.log("Test 1 Failed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+    }
+
+    if(ns.ADD(8, 3) === 11) {
+      T_Results.push(true);
+      console.log("Test 2 Passed");
+    } else {
+      T_Results.push(false);
+      console.log("Test 2 Failed");
+    }
+
+    if(ns.ADD(9, 0) === 9) {
+      T_Results.push(true);
+      console.log("Test 3 Passed");
+    } else {
+      T_Results.push(false);
+      console.log("Test 3 Failed");
+    }
+
+    if(ns.ADD(-1, -9) === -10) {
+      T_Results.push(true);
+      console.log("Test 4 Passed");
+    } else {
+      console.log("Test 4 Failed");
+      T_Results.push(false);
+    }
+    
+    if(ns.ADD(-1000, 995) === -5) {
+      T_Results.push(true);
+      console.log("Test 5 Passed");
+    } else {
+      console.log("Test 5 Failed");
+      T_Results.push(false);
+    }
+    
+    T_Results;
+    `
     
     let path = actual_test;
     //path = "./compiled/test.mjs";
+
+    s.run(req.body.code + tester, function(output) {
+      //console.log("The answer is: %d", output.result * 10); // The answer is: 42
+      console.log(output.result);
+      console.log(output.console);
+      testCaseResults = output.result;
+      res.json({testCaseResults});
+    });
+
+    
+    //res.json({ message: "success"});
+    
+    //will remove entire if statement later
+    /*
     if(fs.existsSync(path)){
       
       import(path).then((ns) => {
@@ -99,7 +162,38 @@ app.post("/javascript", (req, res) => {
     //res.json({ message: "success"});
     
     //return later
+    */
     
+});
+
+app.post("/practice_javascript", (req, res) => {
+  const s = new Sandbox();
+  console.log(req.body);
+  let actual_test = "./compiled/test.mjs";
+  let testCaseResults = [];
+
+  let tester = `//~~~~~~~~~~~~~~~~Initalizing Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  if(ADD(1, 2) === 3) {
+    console.log("Test 1 Passed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+  } else {
+    console.log("Test 1 Failed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+  }
+  `
+  
+  let path = actual_test;
+  //path = "./compiled/test.mjs";
+
+  s.run(req.body.code + tester, function(output) {
+    //console.log("The answer is: %d", output.result * 10); // The answer is: 42
+    console.log(output.result);
+    console.log(output.console);
+    testCaseResults = output.console;
+    res.json({testCaseResults});
+  });
+  console.log(testCaseResults);
+  //res.json({testCaseResults});
+  //res.json({ message: "success"});
+  
 });
 
 /*
