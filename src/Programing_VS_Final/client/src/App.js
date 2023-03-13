@@ -1,4 +1,5 @@
 import './App.css';
+import './index.css';
 import React from 'react';
 import { useState } from 'react';
 import Practice from './practice';
@@ -29,12 +30,15 @@ function App() {
 
   return (
     <div className="App">
+      <center><h1>Programming Versus</h1></center>
+      
       {!process ? ( 
-        <div className=''>
-          <button onClick={handleLobby}>
+        <div className='Button-Container'>
+          <p>Welcome to Programming Versus.  This is a program used to help practice against...finish later</p>
+          <button onClick={handleLobby} className='Join-btn'>
             Create/Join Room
           </button>
-          <button onClick={handlePractice}>
+          <button onClick={handlePractice} className='Prac-btn'>
             Practice
           </button>
         </div>

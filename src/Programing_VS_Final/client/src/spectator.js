@@ -1,5 +1,6 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
+import './index.css';
 
 //need to fix and update this
 
@@ -29,11 +30,11 @@ function Spectator({socket, username, room}){
       }, [socket]);
 
       return (
-        <div className="chat-window">
+        <div className="chat">
           <div className="chat-header">
             <p>Live Chat</p>
           </div>
-          <div className="chat-body">
+          <div className="chat-bod">
               {messageList.map((messageContent) => {
                 return (
                   <div

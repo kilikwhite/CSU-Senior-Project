@@ -11,3 +11,275 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*
+* {
+  background-color: black;
+} */
+
+div .App{
+  /*background-color: black; */
+  color:red;
+  font-size: 25px;
+}
+
+div .App div .Button-Container{
+  font-size: 50px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+div .Button-Container .Join-btn{
+  background-color: red; /* Green */
+  border: white;
+  margin-right: 50px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px;
+  font-size: 20px;
+}
+
+div .Button-Container .Join-btn:hover{
+  background-color: orange;
+}
+
+div .Button-Container .Prac-btn{
+  background-color: green;
+  border: white;
+  margin-left: 50px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px;
+  font-size: 20px;
+}
+
+div .Button-Container .Prac-btn:hover{
+  background-color: lightgreen;
+}
+
+/*Practice Css Stuff*/
+div .App .Prac-Sub-Btn{
+  background-color: green;
+  border: white;
+  margin-left: 50px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px;
+  font-size: 20px;
+}
+
+div .App .Prac-Sub-Btn:hover{
+  background-color: lightgreen;
+}
+
+div .Prac-Results{
+  color:black;
+  padding: 30px;
+  text-align:center;
+}
+
+/* Lobby Form CSS */
+div .LOBBY_FORM {
+  color: blue;
+} 
+
+div .LOBBY_FORM .LOBBY_FORM-CONTAINER p .IN_Name{
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+div .LOBBY_FORM .LOBBY_FORM-CONTAINER p .IN_ID{
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+div .LOBBY_FORM .LOBBY_FORM-CONTAINER .checkbox{
+  color: black;
+  font-size: 20px;
+}
+
+/* Participent Form CSS */
+div .App .Par-Sub-Btn{
+  background-color: green;
+  border: white;
+  margin-left: 50px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px;
+  font-size: 20px;
+}
+
+div .App .Par-Sub-Btn:hover{
+  background-color: lightgreen;
+}
+
+div .App .chat{
+  width:auto;
+  height: 500px;
+}
+
+div .App .chat .chat-header{
+  height: 45px;
+  border-radius: 6px;
+  background: black;
+  position: relative;
+  cursor: pointer;
+}
+
+div .App .chat .chat-header p{
+  color: white;
+  display: block;
+  padding: 0 1em 0 2em;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+div .App .chat .chat-bod .message{
+  height: auto;
+  padding: 10px;
+  display: flex;
+}
+
+div .App .chat .chat-bod .message .message-content{
+  width: auto;
+  height: auto;
+  min-height: 200px;
+  max-width: 400px;
+  background-color: #435fff;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#you {
+  justify-content: flex-start;
+}
+
+#you .message-content{
+  justify-content: flex-start;
+}
+
+#you .message-meta {
+  justify-content: flex-start;
+  margin-left: 5px;
+  color:#435fff;
+}
+
+#other {
+  justify-content: flex-end;
+}
+
+#other .message-content{
+  justify-content: flex-end;
+  background-color: rgb(182, 0, 0);
+}
+
+#other .message-meta{
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+
+/* Spectator Form CSS */
+div .chat{
+  width:auto;
+  height: 500px;
+}
+
+div .chat .chat-header{
+  height: 45px;
+  border-radius: 6px;
+  background: black;
+  position: relative;
+  cursor: pointer;
+}
+
+div .chat .chat-header p{
+  color: white;
+  display: block;
+  padding: 0 1em 0 2em;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+div .chat .chat-bod .message{
+  height: auto;
+  padding: 10px;
+  display: flex;
+}
+
+div .chat .chat-bod .message .message-content{
+  width: auto;
+  height: auto;
+  min-height: 200px;
+  max-width: 400px;
+  background-color: #435fff;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+div .chat .chat-footer {
+  height: 40px;
+  border: 1px solid #263238;
+  border-top: none;
+  display: flex;
+}
+
+div .chat .chat-footer input {
+  height: 100%;
+  flex: 85%;
+  border: 0;
+  padding: 0 0.7em;
+  font-size: 1em;
+  border-right: 1px dotted #607d8b;
+
+  outline: none;
+  font-family: "Open Sans", sans-serif;
+}
+
+div .chat .chat-footer button {
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex: 15%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  font-size: 25px;
+  color: lightgray;
+}
+
+div .chat .chat-footer button:hover {
+  color: #43a047;
+}
+
+/*
+div .Button-Container .Join-btn{
+
+} */

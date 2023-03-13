@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import './index.css';
 import Participant from './participant';
 import Spectator from './spectator';
 import io from 'socket.io-client';
@@ -46,33 +47,45 @@ function LobForm(){
     return (
         <div className="LOBBY_FORM">
         {!running ? (
-            <div className="LOBBY_FORM">
+            <div className="LOBBY_FORM-CONTAINER">
                 <h3> Please type in your name and Room ID </h3>
-                <input 
-                    type = "text" 
-                    placeholder="John..." 
-                    onChange={(event) => {
-                    setUsername(event.target.value);}}
-                />
+                <p> 
+                    Name: 
+                    <input 
+                        className='IN_Name'
+                        type = "text" 
+                        placeholder="John..." 
+                        onChange={(event) => {
+                        setUsername(event.target.value);}}
+                    />
+                </p>
 
-                <input 
-                    type = "text" 
-                    placeholder="Room ID..."
-                    onChange={(event) => {
-                    setRoom(event.target.value);}}
-                />
+                <p>
+                    Room ID:
+                    <input 
+                        className='IN_ID'
+                        type = "text" 
+                        placeholder="Room ID..."
+                        onChange={(event) => {
+                        setRoom(event.target.value);}}
+                    />
+                </p>
 
-                <input
-                    type = "checkbox"
-                    spectator = {spectator}
-                    onChange = {handleChangeSpec}
-                />
+                <p className='checkbox'>
+                    Please press the checkbox if you are a Spectator:           
+                    <input
+                        className='IN_Check'
+                        type = "checkbox"
+                        spectator = {spectator}
+                        onChange = {handleChangeSpec}
+                    />
+                </p>
 
                 <button onClick={handleMain}>Send</button>
             </div> 
         ) : (
             <div className='main'>
-                <div className='name'> {username} </div>
+                <p className='name'> {username} </p>
                 {joinRoom()}
                 {startProgram()}
                 

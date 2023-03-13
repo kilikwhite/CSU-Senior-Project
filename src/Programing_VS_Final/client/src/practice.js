@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import axios from 'axios';
+import './index.css';
 //const fs = require("fs");
 
 //import { render } from "./aTest";
@@ -11,7 +12,7 @@ import { render } from "react-dom";
 import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-terminal";
+import "ace-builds/src-noconflict/theme-xcode";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 function onChange(newValue) {
@@ -41,7 +42,7 @@ function Practice() {
   
   const showResults = () =>{
       return(
-        <div>
+        <div className='Prac-Results'>
           {testCaseResults.map((res, i) => {
             return (
               <div key={i}>
@@ -74,24 +75,26 @@ function Practice() {
   
   return(
     <div className="App">
-        <div>Please write a function named 'add' that adds two numbers together in javascript and don't forget to use export on the functions</div>
+        <div>Please write a function named 'add' that adds two numbers together in javascript</div>
         <AceEditor
           mode="javascript"
-          theme="terminal"
+          theme="xcode"
           value = {code}
           onChange={ (editor, change) => {
             setCode(editor);
             //console.log(code);
           }}
-          name="UNIQUE_ID_OF_DIV"
+          className="aceEdit"
           editorProps={{ $blockScrolling: true }}
+          height = '500px'
+          width = 'auto'
         />
         {showResults()}
         <button onClick={() => {submitCode();
           console.log(testCaseResults); 
           setTestCaseResults(default_Result);
-          console.log(testCaseResults);}}>
-          Submit</button>
+          console.log(testCaseResults);}} className = 'Prac-Sub-Btn'>
+          Run</button>
       </div> 
   )  
 }

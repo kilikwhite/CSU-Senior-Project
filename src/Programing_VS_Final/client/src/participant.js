@@ -2,9 +2,10 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import AceEditor from "react-ace";
 import axios from 'axios';
+import './index.css';
 
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-terminal";
+import "ace-builds/src-noconflict/theme-xcode";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 function Participant({socket, username, room}){
@@ -19,7 +20,6 @@ function Participant({socket, username, room}){
         .post('http://localhost:80/javascript', {code})
         .then(({data}) => {
           setTestCaseResults(data.testCaseResults);
-          //sendMessage();
           //console.log(data);
           //console.log(data.testCaseResults);
           //console.log(testCaseResults[0]);
@@ -37,12 +37,21 @@ function Participant({socket, username, room}){
         const messageData = {
             room: room,
             author: username,
-            message: currentMessage + "\n\n" + testCaseResults,
+            message: currentMessage,
+            time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+        };
+
+        const resultData = {
+            room: room,
+            author: username,
+            message: JSON.stringify(testCaseResults),
             time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
         };
 
         await socket.emit("send_message", messageData);
         setMessageList((list) => [...list, messageData]);
+        await socket.emit("send_message", resultData);
+        setMessageList((list) => [...list, resultData]);
         setCurrentMessage("");
     }
   };
@@ -80,32 +89,39 @@ function Participant({socket, username, room}){
             setCode(editor);
             //console.log(code);
           }}
-          name="UNIQUE_ID_OF_DIV"
+          className="aceEdit"
           editorProps={{ $blockScrolling: true }}
+          height = '500px'
+          width = 'auto'
+          fontSize={20}
         />
         {showResults()}
-        <button onClick={() => {submitCode(); sendMessage(); setTestCaseResults([]);}}>Submit</button>
+
+        <button onClick={() => {submitCode(); sendMessage(); setTestCaseResults([]);}} className = 'Par-Sub-Btn'>Submit</button>
         <div className='chat'>
-          /* this is for the actual chat*/
-        {messageList.map((messageContent) => {
-            return (
-              <div
-                className="message"
-                id={username === messageContent.author ? "you" : "other"}
-              >
-                <div>
-                  <div className="message-content">
-                    <p>{messageContent.message}</p>
-                  </div>
-                  <div className="message-meta">
-                    <p id="time">{messageContent.time}</p>
-                    <p id="author">{messageContent.author}</p>
+          <div className="chat-header">
+            <p>Session Logs</p>
+          </div>
+          <div className='chat-bod'>
+            {messageList.map((messageContent) => {
+              return (
+                <div
+                  className="message"
+                  id={username === messageContent.author ? "you" : "other"}
+                >
+                  <div>
+                    <div className="message-content">
+                      <p>{messageContent.message}</p>
+                    </div>
+                    <div className="message-meta">
+                      <p id="time">Time sent: {messageContent.time}</p>
+                      <p id="author">Author: {messageContent.author}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })} 
-          /* this is the end */
+              );
+            })} 
+          </div>
         </div>
     </div> 
   )  
