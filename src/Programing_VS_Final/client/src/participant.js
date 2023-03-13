@@ -5,7 +5,7 @@ import axios from 'axios';
 import './index.css';
 
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-xcode";
+import "ace-builds/src-noconflict/theme-kuroir";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 function Participant({socket, username, room}){
@@ -70,7 +70,7 @@ function Participant({socket, username, room}){
           {testCaseResults.map((res, i) => {
             return (
               <div key={i}>
-                <div>Test {i + 1} {res === true ? 'passed' : 'failed'}</div>
+                <div>{res}</div>
               </div>
             );
           })}
@@ -83,7 +83,7 @@ function Participant({socket, username, room}){
         <div>Please write a function named 'add' that adds two numbers together in javascript and don't forget to use export on the functions</div>
         <AceEditor
           mode="javascript"
-          theme="terminal"
+          theme="kuroir"
           value = {code}
           onChange={ (editor, change) => {
             setCode(editor);

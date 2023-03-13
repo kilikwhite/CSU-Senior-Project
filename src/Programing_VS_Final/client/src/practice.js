@@ -46,7 +46,7 @@ function Practice() {
           {testCaseResults.map((res, i) => {
             return (
               <div key={i}>
-                <div>Test {i + 1} {res === true ? 'passed' : 'failed'}</div>
+                <div>{res}</div>
               </div>
             );
           })}
@@ -56,7 +56,7 @@ function Practice() {
 
   const submitCode = () =>{
       axios
-        .post('http://localhost:80/javascript', {code})
+        .post('http://localhost:80/practice_javascript', {code})
         .then(({data}) => {
           setTestCaseResults(data.testCaseResults);
           //showResults();
