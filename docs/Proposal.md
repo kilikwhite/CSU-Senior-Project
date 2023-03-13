@@ -76,7 +76,7 @@ Javascript
 Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s):
 ---------------------------------------------------------------------------------------------------
 
-Express.js, Ace Editor, React, Socket.io, and Axios 
+Express.js, Ace Editor, React, Socket.io, npm Sandbox, npm react-timer-hook, and Axios 
 
 Additional Software/Equipment Needed:
 -------------------------------------

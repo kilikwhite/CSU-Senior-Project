@@ -1,5 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
+import Timer from './timer';
+import Stopwatch from './stopwatch';
 
 //need to fix and update this
 
@@ -28,8 +30,15 @@ function Spectator({socket, username, room}){
           });
       }, [socket]);
 
+      const time = new Date();
+      time.setSeconds(time.getSeconds() + 600);
+
       return (
         <div className="chat-window">
+          <div className="Test-timers">
+            <Timer expiryTimestamp={time} />
+            <Stopwatch/>
+          </div>
           <div className="chat-header">
             <p>Live Chat</p>
           </div>

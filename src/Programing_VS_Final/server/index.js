@@ -52,46 +52,34 @@ app.post("/javascript", (req, res) => {
     let tester = `//~~~~~~~~~~~~~~~~Initalizing Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     let T_Results = [];
     if(ADD(1, 2) === 3) {
-      T_Results.push(true);
-      console.log("Test 1 Passed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+      console.log("Test 1 Passed");
     } else {
-      T_Results.push(false);
-      console.log("Test 1 Failed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+      console.log("Test 1 Failed");
     }
 
-    if(ns.ADD(8, 3) === 11) {
-      T_Results.push(true);
+    if(ADD(8, 3) === 11) {
       console.log("Test 2 Passed");
     } else {
-      T_Results.push(false);
       console.log("Test 2 Failed");
     }
 
-    if(ns.ADD(9, 0) === 9) {
-      T_Results.push(true);
+    if(ADD(9, 0) === 9) {
       console.log("Test 3 Passed");
     } else {
-      T_Results.push(false);
       console.log("Test 3 Failed");
     }
 
-    if(ns.ADD(-1, -9) === -10) {
-      T_Results.push(true);
+    if(ADD(-1, -9) === -10) {
       console.log("Test 4 Passed");
     } else {
       console.log("Test 4 Failed");
-      T_Results.push(false);
     }
     
-    if(ns.ADD(-1000, 995) === -5) {
-      T_Results.push(true);
+    if(ADD(-1000, 995) === -5) {
       console.log("Test 5 Passed");
     } else {
       console.log("Test 5 Failed");
-      T_Results.push(false);
     }
-    
-    T_Results;
     `
     
     let path = actual_test;
@@ -101,7 +89,10 @@ app.post("/javascript", (req, res) => {
       //console.log("The answer is: %d", output.result * 10); // The answer is: 42
       console.log(output.result);
       console.log(output.console);
-      testCaseResults = output.result;
+      testCaseResults = output.console;
+      if(output.result !== 'null'){
+        testCaseResults.push(output.result);
+      }
       res.json({testCaseResults});
     });
 
@@ -168,10 +159,19 @@ app.post("/javascript", (req, res) => {
 
 app.post("/practice_javascript", (req, res) => {
   const s = new Sandbox();
-  console.log(req.body);
+  //console.log(req.body);
+  temp_storage = req.body.code.length;
+  //console.log(temp_storage);
   let actual_test = "./compiled/test.mjs";
   let testCaseResults = [];
 
+  /*
+  if(temp_storage === 0){
+    testCaseResults.push(false);
+    res.json({testCaseResults});
+    return;
+  }*/
+  
   let tester = `//~~~~~~~~~~~~~~~~Initalizing Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if(ADD(1, 2) === 3) {
     console.log("Test 1 Passed, Expected Output is 3, Actual Output is: " + ADD(1,2));
@@ -188,9 +188,12 @@ app.post("/practice_javascript", (req, res) => {
     console.log(output.result);
     console.log(output.console);
     testCaseResults = output.console;
+    if(output.result !== 'null'){
+      testCaseResults.push(output.result);
+    }
     res.json({testCaseResults});
   });
-  console.log(testCaseResults);
+  //console.log(testCaseResults);
   //res.json({testCaseResults});
   //res.json({ message: "success"});
   
