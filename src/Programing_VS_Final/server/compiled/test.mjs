@@ -1,1 +1,3 @@
-function ADD(a, b){}
+function ADD(a, b){
+    return a + b;
+}

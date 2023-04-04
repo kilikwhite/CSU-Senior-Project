@@ -2,17 +2,21 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import AceEditor from "react-ace";
 import axios from 'axios';
+//import Stopwatch from './stopwatch';
 import './index.css';
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-kuroir";
 import "ace-builds/src-noconflict/ext-language_tools";
 
+const startTime = Date.now();
+
 function Participant({socket, username, room}){
   const [code, setCode] = useState("");
   const [testCaseResults, setTestCaseResults] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  //const startTime = Date.now();
 
   const submitCode = () =>{
       setCurrentMessage(code);
@@ -34,27 +38,42 @@ function Participant({socket, username, room}){
 
   const sendMessage = async () => {
     if (currentMessage !== ""){
+        const endTime = Date.now();
         const messageData = {
             room: room,
             author: username,
-            message: currentMessage,
+            message: "Here is an array of Test Cases Passed: " + JSON.stringify(testCaseResults) + "\n\nAnd it took " + ((endTime - startTime) / 1000) + " seconds",
             time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
         };
-
+        /*
         const resultData = {
             room: room,
             author: username,
             message: JSON.stringify(testCaseResults),
             time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-        };
+        }; */
 
         await socket.emit("send_message", messageData);
         setMessageList((list) => [...list, messageData]);
-        await socket.emit("send_message", resultData);
-        setMessageList((list) => [...list, resultData]);
-        setCurrentMessage("");
+        //await socket.emit("send_message", resultData);
+        //setMessageList((list) => [...list, resultData]);
+        //setCurrentMessage("");
     }
   };
+
+  const shareCode = async () => {
+    if (testCaseResults.length !== 0){
+      const resultData = {
+          room: room,
+          author: username,
+          message: currentMessage,
+          time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+      };
+
+      await socket.emit("send_message", resultData);
+      setMessageList((list) => [...list, resultData]);
+    }
+  }
 
   useEffect (() => {
       socket.on("receive_message", (data) => {
@@ -97,7 +116,8 @@ function Participant({socket, username, room}){
         />
         {showResults()}
 
-        <button onClick={() => {submitCode(); sendMessage(); setTestCaseResults([]);}} className = 'Par-Sub-Btn'>Submit</button>
+        <button onClick={() => {submitCode(); sendMessage(); setTestCaseResults([]);}} className = 'Par-Sub-Btn'>Submit Code</button>
+        <button onClick={() => {shareCode();}} className = 'Par-Shar-Btn'>Share Code</button>
         <div className='chat'>
           <div className="chat-header">
             <p>Session Logs</p>

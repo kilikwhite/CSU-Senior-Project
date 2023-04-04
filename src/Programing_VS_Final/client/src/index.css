@@ -124,6 +124,22 @@ div .App .Par-Sub-Btn:hover{
   background-color: lightgreen;
 }
 
+div .App .Par-Shar-Btn{
+  background-color: blue;
+  border: white;
+  margin-left: 50px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px;
+  font-size: 20px;
+}
+
+div .App .Par-Shar-Btn:hover{
+  background-color: lightblue;
+}
+
 div .App .chat{
   width:auto;
   height: 500px;
