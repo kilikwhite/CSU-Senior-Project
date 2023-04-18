@@ -1,4 +1,4 @@
-const fs = require("fs");
+//const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -36,53 +36,53 @@ io.on("connection", (socket) => {
 app.use(cors());
 app.use(express.json());
 
-let default1 = "./compiled/rightAwnser.mjs";
-let default2 = "./compiled/incorrectAwnser.mjs";
+//let default1 = "./compiled/rightAwnser.mjs";
+//let default2 = "./compiled/incorrectAwnser.mjs";
 
 app.post("/javascript", (req, res) => {
     const s = new Sandbox();
 
     //might not need below thing
-    fs.writeFileSync("./compiled/test.mjs", req.body.code);
+    //fs.writeFileSync("./compiled/test.mjs", req.body.code);
     //fs.writeFileSync("test.js", req.body.code);
-    console.log(req.body);
-    let actual_test = "./compiled/test.mjs";
+    //console.log(req.body);
+    //let actual_test = "./compiled/test.mjs";
     let testCaseResults = [];
 
     let tester = `//~~~~~~~~~~~~~~~~Initalizing Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     let T_Results = [];
-    if(ADD(1, 2) === 3) {
+    if(fibSQ(3) === 2) {
       console.log("Test 1 Passed");
     } else {
       console.log("Test 1 Failed");
     }
 
-    if(ADD(8, 3) === 11) {
+    if(fibSQ(0) === 0) {
       console.log("Test 2 Passed");
     } else {
       console.log("Test 2 Failed");
     }
 
-    if(ADD(9, 0) === 9) {
+    if(fibSQ(14) === 377) {
       console.log("Test 3 Passed");
     } else {
       console.log("Test 3 Failed");
     }
 
-    if(ADD(-1, -9) === -10) {
+    if(fibSQ(9) === 34) {
       console.log("Test 4 Passed");
     } else {
       console.log("Test 4 Failed");
     }
     
-    if(ADD(-1000, 995) === -5) {
+    if(fibSQ(20) === 6765) {
       console.log("Test 5 Passed");
     } else {
       console.log("Test 5 Failed");
     }
     `
     
-    let path = actual_test;
+    //let path = actual_test;
     //path = "./compiled/test.mjs";
 
     s.run(req.body.code + tester, function(output) {
@@ -160,9 +160,9 @@ app.post("/javascript", (req, res) => {
 app.post("/practice_javascript", (req, res) => {
   const s = new Sandbox();
   //console.log(req.body);
-  temp_storage = req.body.code.length;
+  //temp_storage = req.body.code.length;
   //console.log(temp_storage);
-  let actual_test = "./compiled/test.mjs";
+  //let actual_test = "./compiled/test.mjs";
   let testCaseResults = [];
 
   /*
@@ -173,14 +173,14 @@ app.post("/practice_javascript", (req, res) => {
   }*/
   
   let tester = `//~~~~~~~~~~~~~~~~Initalizing Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if(ADD(1, 2) === 3) {
-    console.log("Test 1 Passed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+  if(fibSQ(3) === 2) {
+    console.log("Test 1 Passed, Expected Output is 2, Actual Output is: " + fibSQ(3));
   } else {
-    console.log("Test 1 Failed, Expected Output is 3, Actual Output is: " + ADD(1,2));
+    console.log("Test 1 Failed, Expected Output is 2, Actual Output is: " + fibSQ(3));
   }
   `
   
-  let path = actual_test;
+  //let path = actual_test;
   //path = "./compiled/test.mjs";
 
   s.run(req.body.code + tester, function(output) {

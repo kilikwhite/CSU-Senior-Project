@@ -34,7 +34,8 @@ function App() {
       
       {!process ? ( 
         <div className='Button-Container'>
-          <p>Welcome to Programming Versus.  This is a program used to help practice against...finish later</p>
+          <p>Welcome to Programming Versus.  This is a program used to help practice against others to prepare for programing compititions or to increase your skills as a programmer</p>
+          <p>To begin please select one of two buttons</p>
           <button onClick={handleLobby} className='Join-btn'>
             Create/Join Room
           </button>

@@ -38,7 +38,6 @@ function Spectator({socket, username, room}){
         <div className="chat">
           <div className="chat-window">
             <div className="Test-timers">
-              <Timer expiryTimestamp={time} />
               <Stopwatch/>
             </div>
             <div className="chat-header">

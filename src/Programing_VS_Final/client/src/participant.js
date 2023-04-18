@@ -99,7 +99,7 @@ function Participant({socket, username, room}){
   
   return(
     <div className="App">
-        <div>Please write a function named 'add' that adds two numbers together in javascript and don't forget to use export on the functions</div>
+        <div>Please write a function named 'fibSQ' that returns a value in the Fibonacci Sequence</div>
         <AceEditor
           mode="javascript"
           theme="kuroir"

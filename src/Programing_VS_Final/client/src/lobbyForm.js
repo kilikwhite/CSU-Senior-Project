@@ -85,7 +85,8 @@ function LobForm(){
             </div> 
         ) : (
             <div className='main'>
-                <p className='name'> {username} </p>
+                <p className='name'> Screen-Name: {username} </p>
+                <p className='room-ID'> Room-ID: {room} </p>
                 {joinRoom()}
                 {startProgram()}
                 

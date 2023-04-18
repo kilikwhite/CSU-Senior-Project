@@ -17,12 +17,9 @@ function Stopwatch() {
   
     return (
       <div className='timer-container'>
-        <h1>react-timer-hook</h1>
-        <p>Stopwatch Demo</p>
         <div className='main-stopwatch'>
           <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
         </div>
-        <p>{isRunning ? 'Running' : 'Not running'}</p>
         <button onClick={start}>Start</button>
         <button onClick={pause}>Pause</button>
         <button onClick={reset}>Reset</button>
